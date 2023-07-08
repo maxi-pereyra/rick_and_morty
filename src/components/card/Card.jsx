@@ -1,10 +1,10 @@
-import {Link} from 'react-router-dom'
-import Styles from './Card.css'
-import {addFav,removeFav} from '../redux/actions'
-import {connect} from 'react-redux'
-import { useState , useEffect } from 'react'
+import {Link} from 'react-router-dom';
+import Styles from './Card.module.css';
+import {addFav,removeFav} from '../redux/actions';
+import {connect} from 'react-redux';
+import { useState , useEffect } from 'react';
 
-function Card({id, name, status, species, gender, origin, image, onClose, addFav,removeFav, myFavorites}) { // en de props hacer directamente el destructuring
+function Card({id, name, status, species, gender, origin, image, onClose, addFav, removeFav, myFavorites}) { // en de props hacer directamente el destructuring
    
    const [isFav, setIsFav] = useState(false);
    
@@ -15,7 +15,7 @@ function Card({id, name, status, species, gender, origin, image, onClose, addFav
       }
       else{
          setIsFav(true);
-         removeFav({id, name, species, gender, image});
+         addFav({id, name, species, gender, image, onClose});
       }
    }
 
@@ -34,11 +34,11 @@ function Card({id, name, status, species, gender, origin, image, onClose, addFav
          <h2 className={Styles.name}>{name}</h2>
          </Link>   
          
-         <h2>{species}</h2>
-         <h2>{gender}</h2>
-         <h2>{status}</h2>
-         <h2>{origin}</h2>
-         <img src={image} alt={name} /> 
+         <h2 className={Styles.info}>{species}</h2>
+         <h2 className={Styles.info}>{gender}</h2>
+         <h2 className={Styles.info}>{status}</h2>
+         <h2 className={Styles.info}>{origin}</h2>
+         <img className={Styles.image} src={image} alt={name} /> 
 
          {
          isFav ? (
@@ -47,7 +47,7 @@ function Card({id, name, status, species, gender, origin, image, onClose, addFav
             <button onClick={handleFavorite}>🤍</button>
          )
          }
-         <button onClick={() => onClose(id)}>X</button>
+         <button className={Styles.btn} onClick={() => onClose(id)}>X</button>
 
       </div>
    );

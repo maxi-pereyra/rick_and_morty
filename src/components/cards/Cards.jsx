@@ -1,9 +1,10 @@
 import Card from '../card/Card';
+import Styles from "./Cards.module.css";
 
 export default function Cards({ characters , onClose}) {
    //un foreach nno funciona porque no retorna nada 
    return(
-       <div>
+       <div className={Styles.cards}>
          {
             characters.map(({id, name, status, species, gender, origin, image}) => {
                return(

@@ -3,6 +3,7 @@ import Cards from './components/cards/Cards';
 import Nav from './components/nav/Nav';
 import About from './components/about/About';
 import Detail from './components/detail/Detail';
+import Favorites from './components/favorites/Favorites';
 import { useState , useEffect } from "react";
 import axios from 'axios';
 import {Routes , Route, useLocation, useNavigate} from 'react-router-dom';
@@ -64,13 +65,13 @@ function App() {
             : null */
          }
          
-         {/* <Cards characters={characters} onClose={onClose}/> */}
          <Routes>
             <Route path='/' element={<Form login={login}/>} />
             <Route path="/home" 
             element={<Cards characters={characters} onClose={onClose}/>}>Home</Route>
             <Route path="/About" element={<About/>} />
             <Route path="/Detail/:id" element={<Detail/>} />
+            <Route path="/Favorites" element={<Favorites/>}/>
          </Routes>
       
       
