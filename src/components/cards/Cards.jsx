@@ -1,4 +1,4 @@
-import Card from './Card';
+import Card from '../card/Card';
 
 export default function Cards({ characters , onClose}) {
    //un foreach nno funciona porque no retorna nada 
