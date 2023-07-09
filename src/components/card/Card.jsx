@@ -33,13 +33,14 @@ function Card({id, name, status, species, gender, origin, image, onClose, addFav
          <Link to={`/detail/${id}`}>
          <h2 className={Styles.name}>{name}</h2>
          </Link>   
-         
+         <img className={Styles.image} src={image} alt={name} /> 
+         <div>
          <h2 className={Styles.info}>{species}</h2>
          <h2 className={Styles.info}>{gender}</h2>
          <h2 className={Styles.info}>{status}</h2>
          <h2 className={Styles.info}>{origin}</h2>
-         <img className={Styles.image} src={image} alt={name} /> 
-
+         </div>
+         
          {
          isFav ? (
             <button onClick={handleFavorite}>❤️</button>

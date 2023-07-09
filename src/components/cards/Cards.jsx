@@ -8,7 +8,8 @@ export default function Cards({ characters , onClose}) {
          {
             characters.map(({id, name, status, species, gender, origin, image}) => {
                return(
-                  <Card key={id} //para cuando usamos distintas platillas diferenciarlas si luego queremos modificar solo una 
+                  <Card 
+                  key={id} //para cuando usamos distintas platillas diferenciarlas si luego queremos modificar solo una 
                   id={id}
                   name={name}
                   status={status}

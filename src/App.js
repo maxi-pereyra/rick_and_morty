@@ -57,7 +57,7 @@ function App() {
    }
 
    return (
-      <div className='App'>
+      <div className='App img'>
          {
             location.pathname !== "/" && <Nav onSearch={onSearch}/>
             /* location.pathname !== '/'
