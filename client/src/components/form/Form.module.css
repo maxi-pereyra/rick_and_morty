@@ -1,0 +1,15 @@
+.div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.form_rm{
+    background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+}
