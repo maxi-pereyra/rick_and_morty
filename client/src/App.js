@@ -13,44 +13,55 @@ import Form from './components/form/Form'
 //si no aclaro con un destructuring trae lo de default (cuando detructuring a una constante tiene que tener el mismo nombre )
 
 
-const email = 'maxi@gmail.com'
+/* const email = 'maxi@gmail.com'
 const password = '1234asdf'
-
+ */
 function App() {
    const location = useLocation(); //para saber donde esta posicionado el usuario
    let [characters, setCharacters] = useState([]);
-   const [acces, setAcces] = useState(false);
+   const [access, setAccess] = useState(false);
    const navigate = useNavigate();
 
-   const login = (userData) =>{
+/*    const login = (userData) =>{
       if(userData.email === email && userData.password === password){
-         setAcces(true);
+         setAccess(true);
          navigate('/home');
       }else {
          alert("email o password incorrexto")
       }
+   } */
+   
+   const login = async (userData) => {
+      try {
+         const { email, password } = userData;
+         const URL = 'http://localhost:3001/rickandmorty/login';
+         const {data}= await axios(URL + `?email=${email}&password=${password}`) 
+         const { access } = data;
+         
+         setAccess(access);   
+         access && navigate('/home'); 
+         
+      } catch (error) {
+         console.log(error.message);
+         //console.log(access)
+      }
    }
 
    useEffect(() =>{
-         !acces && navigate('/');
-   }, [acces])
+         !access && navigate('/');
+   }, [access])
 
-   const onSearch = (id) => {
-      axios(`http://localhost:3001/rickandmorty/character/${id}`)
-      .then(({ data }) => { //esto es una promesa
-         if (data.name) {
-            setCharacters((oldChars) => [...oldChars, data]);
-         } else {
-           // window.alert('¡No hay personajes con este ID!');
-         }
-      })
-      .catch((err) => alert(err.data.id.error));
+   const onSearch = async (id) => {
+    try {
+       const {data} = await axios(`http://localhost:3001/rickandmorty/character/${id}`)
+       if (data.name) {
+          setCharacters((oldChars) => [...oldChars, data]);
+         } 
+      } catch (error) {
+         alert('¡No hay personajes con este ID!');
+         } 
    }
 
- /*   const onSearch = () => {
-      //hacemos una copia para no perder lo que tenimos 
-      setCharacters([...characters, example])
-   }      */
 
    const onClose = (id) => {
       const charactersFiltered = characters.filter(characters => 

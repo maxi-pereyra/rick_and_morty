@@ -1,4 +1,4 @@
-import {ADD_FAV, REMOVE_FAV} from './actions-types'
+import {ADD_FAV, REMOVE_FAV } from './actions-types'
 
 const initialState = {
     myFavorites: []
@@ -9,12 +9,12 @@ const reducer = (state = initialState, {type,payload}) => {
         case ADD_FAV:
             return {
                 ...state,
-                myFavorites: [...state.myFavorites,payload]
+                myFavorites: payload 
             }
         case REMOVE_FAV:
             return{
                 ...state,
-                myFavorites: state.myFavorites.filter(fav => fav.id !== payload)
+                myFavorites: payload
             }
         default:
             return {...state}
