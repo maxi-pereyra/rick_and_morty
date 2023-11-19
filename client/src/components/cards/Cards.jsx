@@ -1,8 +1,9 @@
 import Card from '../card/Card';
 import Styles from "./Cards.module.css";
 
-export default function Cards({ characters , onClose}) {
-   //un foreach nno funciona porque no retorna nada 
+export default function Cards( characters ) {
+   
+   console.log("esto" ,characters)
    return(
        <div className={Styles.cards}>
          {
@@ -17,7 +18,7 @@ export default function Cards({ characters , onClose}) {
                   gender={gender}
                   image={image}
                   origin={origin.name}
-                  onClose={onClose}
+                  //onClose={onClose}
                   />
                )
             })
