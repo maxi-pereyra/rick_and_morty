@@ -10,7 +10,7 @@ import Favorites from './components/favorites/Favorites';
 import Form from './components/form/Form'
 
 function App() {
-   let [characters, setCharacters] = useState([]);
+/*    let [characters, setCharacters] = useState([]);
    const [access, setAccess] = useState(false);
   
    const login = async (userData) => {
@@ -19,7 +19,7 @@ function App() {
          const URL = 'http://localhost:3001/rickandmorty/login';
          const {data}= await axios(URL + `?email=${email}&password=${password}`) 
          const { access } = data;
-         
+         console.log(access)
          setAccess(access);   
           
       } catch (error) {
@@ -33,13 +33,13 @@ function App() {
          characters.id !== Number(id))
       setCharacters(charactersFiltered)
    }
-
+ */
    return (
       <div className='App img'>
          
          <Routes>
-            <Route path='/' element={<Form login={login}/>} />
-            <Route path="/home" element={<Home/>}>Home</Route>
+            {/* <Route path='/' element={<Form login={login}/>} /> */}
+            <Route path="/" element={<Home/>}>Home</Route>
             <Route path="/About" element={<About/>} />
             <Route path="/Detail/:id" element={<Detail/>} />
             <Route path="/Favorites" element={<Favorites/>}/>

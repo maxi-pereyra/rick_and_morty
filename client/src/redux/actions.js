@@ -15,6 +15,7 @@ export const addFav = (character) => {
         try {
             const {data} = await axios.post(endpoint,character)      
             
+            console.log("add" , data)
             return dispatch({
                 type: ADD_FAV,
                 payload: data,
@@ -32,6 +33,8 @@ export const removeFav = (id) => {
         try {
             const {data} = await axios.delete(endpoint);
             
+            console.log("delte" , data)
+
             return dispatch({
                 type: REMOVE_FAV,
                 payload: data,
@@ -45,10 +48,10 @@ export const removeFav = (id) => {
 export const getCharacters = () => {
     return async (dispatch)=>{
         try {
-            const {data} = await axios.get(`http://localhost:3001/rickandmorty/`);
+            const {data} = await axios.get(`http://localhost:3001/rickandmorty`);
 
-            console.log("dentro get")
-            const character = data?.map((ele) => ({
+            //console.log("dentro get", data)
+            const character = data?.results.map((ele) => ({
                 id: ele.id,
                 name: ele.name,
                 status: ele.status,
@@ -57,7 +60,7 @@ export const getCharacters = () => {
                 image: ele.image,
                 origin: ele.origin
             }));
-
+            //  console.log("character" , character)
             return dispatch({
                 type: GET_CHARACTER,
                 payload: character,
