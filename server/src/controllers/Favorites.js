@@ -9,7 +9,11 @@ const postFav = (character)=>{
 
 const deleteFav = (id) => {
     
-    myFavorites = myFavorites.Filter((favorite)=> favorite.id !== +id);
+    console.log("delete" , myFavorites)
+    console.log("id" , id , typeof id)
+    myFavorites = myFavorites.filter(fav => fav.id !== id)
+
+    console.log("deletetrue" , myFavorites)
 
     return myFavorites;
 }
