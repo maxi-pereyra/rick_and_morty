@@ -3,6 +3,7 @@ const { handlerLogin } = require("../handlers/handlerLogin");
 const { handlerGetCharByid } = require("../handlers/handlerGetCharById");
 const { handlerPostFav , handlerDeleteFav } = require("../handlers/handlerFavorites");
 const { handlerGetCharacter } = require("../handlers/handlerGetCharacter")
+const { handlerGetCharacterByName } = require("../handlers/handlerGetCharacterByName");
 
 const router = require('express').Router();
 
@@ -15,6 +16,9 @@ router.get('/character/:id',(req,res)=>{
     handlerGetCharByid(req,res);
 });
 
+router.get('/character',(req,res)=>{
+    handlerGetCharacterByName(req,res)
+});
 
 router.get('/login',(req,res)=>{
     handlerLogin(req,res);

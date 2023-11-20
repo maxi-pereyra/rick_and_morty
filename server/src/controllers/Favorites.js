@@ -11,7 +11,7 @@ const deleteFav = (id) => {
     
     console.log("delete" , myFavorites)
     console.log("id" , id , typeof id)
-    myFavorites = myFavorites.filter(fav => fav.id !== id)
+    myFavorites = myFavorites.filter(fav => fav.id !== Number(id))
 
     console.log("deletetrue" , myFavorites)
 
