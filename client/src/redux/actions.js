@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {ADD_FAV, REMOVE_FAV, GET_CHARACTER} from './actions-types'
+import {ADD_FAV, REMOVE_FAV, GET_CHARACTER, GET_BY_NAME} from './actions-types'
 
 /* export const addFav = (character) => {
     return {type: ADD_FAV, payload: character}
@@ -71,6 +71,22 @@ export const getCharacters = () => {
     }
 }
 
+
+export const getCharacterByName = (name) =>{
+    return async (dispatch) => {
+        try {
+            const {data} = await axios.get(`http://localhost:3001/rickandmorty/character/?name=${name}`)
+
+            console.log("byname" ,data)
+            return dispatch({
+                type: GET_BY_NAME,
+                payload: data
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
 /* export const filterCards = (gender) => {
     return {type: FILTER , payload: gender}
 }

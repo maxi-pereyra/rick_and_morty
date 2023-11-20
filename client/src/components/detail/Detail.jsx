@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useParams } from "react-router-dom"; //nos permite acceder a la variable de la url
 import {useState , useEffect} from 'react';
-
+import { Link } from 'react-router-dom';
 export default function Detail(){
     //inicia como un objeto vacio
     const [character, setCharacter] = useState({});
@@ -21,19 +21,25 @@ export default function Detail(){
      }, [id]);
 
     return (
+
         <div>
-            {
-                /* character && <div>//coersion de datos 
-                    <h2>{character.name}</h2>
-                </div> */
-                //character ? <h2>{character.name}</h2> : null 
-            }      
-            <h2>{character?.name}</h2>
-            <h2>{character?.atatus}</h2>    
-            <h2>{character?.species}</h2>
-            <h2>{character?.gender}</h2>
-            <h2>{character?.origin?.name}</h2>
-            <img src={character?.image} alt={character?.name} />
+            <div>
+                {
+                    /* character && <div>//coersion de datos 
+                        <h2>{character.name}</h2>
+                    </div> */
+                    //character ? <h2>{character.name}</h2> : null 
+                }      
+                <h2>{character?.name}</h2>
+                <h2>{character?.atatus}</h2>    
+                <h2>{character?.species}</h2>
+                <h2>{character?.gender}</h2>
+                <h2>{character?.origin?.name}</h2>
+                <img src={character?.image} alt={character?.name} />
+            </div>
+            <Link to="/">
+                <button >Volver</button>
+            </Link>
         </div>
     );
 }

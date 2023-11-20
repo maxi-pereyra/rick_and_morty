@@ -3,6 +3,7 @@ import Styles from "./Cards.module.css";
 
 export default function Cards( {characters} ) {
    
+   
    return(
        <div className={Styles.cards}>
          {

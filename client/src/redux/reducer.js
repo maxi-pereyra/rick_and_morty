@@ -1,23 +1,31 @@
-import {ADD_FAV, REMOVE_FAV ,GET_CHARACTER} from './actions-types'
+import {ADD_FAV, REMOVE_FAV ,GET_CHARACTER , GET_BY_NAME} from './actions-types'
 
 const initialState = {
     characters: [],
-    myFavorites: []
+    myFavorites: [],
+    charactersCopy: [],
 };
 
 const reducer = (state = initialState, {type,payload}) => {
      switch(type){
         case ADD_FAV:{
+           
             return {
                 ...state,
-                myFavorites: [...state.myFavorites , payload] 
+                myFavorites: [payload] 
             }}
         case REMOVE_FAV:
            { return{
                 ...state,
-                myFavorites: payload
+                myFavorites: [payload]
             }}
         case GET_CHARACTER:{
+            return{
+                ...state,
+                characters: payload
+            }
+        }
+        case GET_BY_NAME:{
             return{
                 ...state,
                 characters: payload

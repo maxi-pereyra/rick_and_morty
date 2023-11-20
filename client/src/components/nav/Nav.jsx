@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 
 
 
-const Nav = ({onSearch}) => {
+const Nav = ({handlerCharacters , uniqueGender,  handlerSearch , onSearch}) => {
     return (
        <nav className={Styles.nav}>
             <button className={Styles.btn}>
@@ -19,8 +19,23 @@ const Nav = ({onSearch}) => {
             <button className={Styles.btn}>
                <Link to="/Favorites">FAVORITOS</Link>
             </button>
-            
-            <SearchBar  onSearch={onSearch}/>
+            <div>
+            <label >filtrar por genero </label>
+            <select 
+               name="gender"
+               onChange={handlerCharacters} >
+                  <option value="">todos</option>
+                  {
+                     uniqueGender?.map((gender) => (
+                        <option key={gender} value={gender}>
+                           {gender}
+                        </option>
+                     ))
+                  }
+               </select>
+
+            </div>
+            <SearchBar handlerSearch={handlerSearch} onSearch={onSearch} />
        </nav>
     );
  }

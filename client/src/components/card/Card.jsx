@@ -22,15 +22,15 @@
       }
 
       useEffect(() => {
-         console.log("cards",myFavorites)
-         if(myFavorites.length !== 0 ){
+         
+         if(myFavorites?.length !== 0 ){
             myFavorites?.forEach((fav) => {
                if (fav.id === id) {
                   setIsFav(true);
                }
             });    
          }
-      }, [myFavorites]);
+      }, [myFavorites , isFav ]);
 
       return (
          <div className={Styles.div}>

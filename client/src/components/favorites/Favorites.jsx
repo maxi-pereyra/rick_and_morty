@@ -1,10 +1,17 @@
 import Card from "../card/Card";
 import Styles from "./Favorites.module.css";
-import { connect } from "react-redux";
+import { useDispatch , useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
-const Favorites = ({ myFavorites}) => {
+const Favorites = () => {
+
+    const dispatch = useDispatch()
+    const [myFavorites , setMyFavorites] = useSelector((state)=> state.myFavorites);
+
+    console.log("Favorites", myFavorites)
     return (
-        
+       <div>
+
         <div className={Styles.cards}>
             {
             myFavorites?.map(fav => { //condicional chaining
@@ -21,18 +28,15 @@ const Favorites = ({ myFavorites}) => {
             )
             })
             }
-        </div>
+         </div>
+            <Link to="/">
+                <button >Volver</button>
+            </Link>
+       </div> 
         
     )
 }
 
-const mapStateToProps = (state) => {
-    return {
-        myFavorites: state.myFavorites
-    }
-}
 
-export default connect (
-    mapStateToProps,
-    null
-)(Favorites);
+
+export default Favorites;
